@@ -1,0 +1,4 @@
+"use client";
+import { Check, Copy } from "lucide-react";
+import { useState } from "react";
+export function CopyCommand({command}:{command:string}){const[copied,setCopied]=useState(false);async function copy(){await navigator.clipboard.writeText(command);setCopied(true);window.setTimeout(()=>setCopied(false),1600)}return <div className="flex min-w-0 items-center gap-3 rounded-lg border border-white/10 bg-[#0c0e12] p-2 pl-4 text-left shadow-2xl"><span aria-hidden className="text-[var(--signal)] mono">$</span><code className="min-w-0 flex-1 overflow-x-auto whitespace-nowrap py-2 text-sm text-white mono">{command}</code><button onClick={copy} className="grid size-10 shrink-0 place-items-center rounded-md bg-white/10 text-white hover:bg-white/15" aria-label="Copy command">{copied?<Check size={16} className="text-[var(--signal)]"/>:<Copy size={16}/>}</button></div>}

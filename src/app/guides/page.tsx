@@ -1,0 +1,6 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+import { guides } from "@/lib/guides";
+export const metadata:Metadata={title:"Guides",description:"Practical guides for designing, automating, packaging, and self-hosting with Pentool."};
+export default function Guides(){return <main><section className="border-b hairline"><div className="shell py-20"><p className="label text-[var(--muted)]">Learn by shipping</p><h1 className="display mt-5 max-w-4xl text-6xl md:text-8xl">Small guides for open design systems.</h1><p className="mt-7 max-w-2xl text-xl leading-8 text-[var(--muted)]">Start with a file. End with a signed, reproducible library your whole team can use.</p></div></section><section className="shell grid gap-4 py-16 md:grid-cols-2">{guides.map((guide,i)=><Link href={`/guides/${guide.slug}`} key={guide.slug} className={`lift flex min-h-72 flex-col rounded-xl border p-7 ${i===1?"border-[var(--ink)] bg-[var(--signal)]":"hairline bg-white/30"}`}><div className="flex justify-between"><span className="label">{guide.eyebrow}</span><ArrowUpRight size={20}/></div><h2 className="mt-auto text-3xl font-semibold tracking-[-.05em]">{guide.title}</h2><p className="mt-3 max-w-md text-sm leading-6 text-[var(--muted)]">{guide.description}</p></Link>)}</section></main>}
